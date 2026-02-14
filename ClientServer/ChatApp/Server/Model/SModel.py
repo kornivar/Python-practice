@@ -12,16 +12,6 @@ class SModel:
 
         self.running = False
 
-    def connect(self):
-        self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.server.bind((self.host, self.port))
-        self.server.listen()
-        # logger.info("SERVER: Started on %s:%s", HOST, PORT)
-        self.running = True
-
-        self.conn, self.addr = server.accept()
-        # logger.info("SERVER: Client connected: %s", addr)
-
     def receive(self):
         while self.running:
             try:
@@ -54,9 +44,18 @@ class SModel:
             self.running = False
             return
 
+    def accept_client(self):
+        self.conn, self.addr = self.server.accept()
+        # logger.info("SERVER: Client connected: %s", addr)
+        threading.Thread(target=self.receive, daemon=True).start()
+
     def start(self):
-        self.t1 = threading.Thread(target=self.receive, args=())
-        self.t1.start()
+        self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.server.bind((self.host, self.port))
+        self.server.listen()
+        self.running = True
+
+        threading.Thread(target=self.accept_client, daemon=True).start()
 
     def stop(self):
         self.running = False
