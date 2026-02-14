@@ -28,9 +28,11 @@ def receive():
     while running:
         try:
             data = client.recv(1024)
+
             if not data:
                 logger.info("CLIENT: Server disconnected")
                 break
+
             logger.info("CLIENT: Message received")
             print("\nServer:", data.decode())
         except:
