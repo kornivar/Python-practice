@@ -19,8 +19,9 @@ class SController:
             self.sview.disable_button()
             self.sview.show_info("quit used, disconnecting")
             self.smodel.stop()
+            return
 
-        self.sview.root.after(1000, self.to_stop_or_not_to_stop)
+        self.sview.root.after(1500, self.to_stop_or_not_to_stop)
 
     def send_message(self, message):
         self.smodel.send(message)

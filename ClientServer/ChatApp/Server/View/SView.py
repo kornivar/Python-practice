@@ -1,6 +1,4 @@
 import tkinter as tk
-from importlib.metadata import pass_none
-
 
 class SView:
     def __init__(self, scontroller):
@@ -20,7 +18,7 @@ class SView:
     def create_interface(self):
         self.root.configure(background="#EAF4F9")
 
-        self.text_area = tk.Text(self.root, state="disabled", wrap="word", bg="#BFDCEB", fg="#243B4A", insertbackground="#1C2E3A")
+        self.text_area = tk.Text(self.root, state="disabled", wrap="word", bg="#BFDCEB", fg="DarkBlue", insertbackground="#1C2E3A")
         self.text_area.pack(padx=10, pady=10, fill="both", expand=True)
 
         self.bottom_frame = tk.Frame(self.root)
@@ -54,18 +52,18 @@ class SView:
             self.text_area.see(tk.END)
             self.entry.delete(0, tk.END)
 
-    def disable_button(self):
-        self.send_button.configure(state="disabled")
-
-    def enable_button(self):
-        self.send_button.configure(state="normal")
-
     def show_info(self, massage):
         if massage.strip():
             self.text_area.config(state="normal")
             self.text_area.insert(tk.END, f"{massage.upper()}\n")
             self.text_area.config(state="disabled")
             self.text_area.see(tk.END)
+
+    def disable_button(self):
+        self.send_button.configure(state="disabled")
+
+    def enable_button(self):
+        self.send_button.configure(state="normal")
 
     def start(self):
         self.root.mainloop()

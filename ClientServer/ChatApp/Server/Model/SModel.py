@@ -21,12 +21,13 @@ class SModel:
                     # logger.info("SERVER: Client disconnected: %s", addr)
                     break
 
+                message = data.decode()
+                self.queue.put(message)
+
                 if data.decode() == "quit":
                     self.running = False
                     break
 
-                message = data.decode()
-                self.queue.put(message)
             except:
                 # logger.info("SERVER: Client disconnected: %s", addr)
                 break
@@ -91,3 +92,4 @@ class SModel:
             pass
 
         self.receive_thread.join()
+        print("Thread closed")

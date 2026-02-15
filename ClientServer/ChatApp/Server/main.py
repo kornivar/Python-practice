@@ -1,17 +1,6 @@
 # import socket
 # import logging
 # import threading
-import queue
-
-from Model.SModel import  SModel
-from Controller.SController import SController
-
-queue = queue.Queue()
-
-smodel = SModel('127.0.0.1', 4000, queue)
-scontroller = SController(smodel, queue)
-scontroller.start()
-
 
 # logging.basicConfig(
 #     level=logging.INFO,
@@ -22,7 +11,21 @@ scontroller.start()
 # )
 #
 # logger = logging.getLogger(__name__)
-#
+
+import queue
+
+from Model.SModel import  SModel
+from Controller.SController import SController
+
+HOST = '127.0.0.1'
+PORT = 4000
+queue = queue.Queue()
+
+smodel = SModel(HOST, PORT, queue)
+scontroller = SController(smodel, queue)
+scontroller.start()
+
+
 # HOST = '127.0.0.1'
 # PORT = 4000
 #
