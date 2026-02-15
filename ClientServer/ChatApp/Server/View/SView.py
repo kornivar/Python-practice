@@ -13,6 +13,8 @@ class SView:
         y = (self.root.winfo_screenheight() - 550) // 2
         self.root.geometry(f"{400}x{550}+{x}+{y}")
 
+        self.create_interface()
+
 
 
     def create_interface(self):
@@ -52,6 +54,18 @@ class SView:
             self.text_area.see(tk.END)
             self.entry.delete(0, tk.END)
 
+    def disable_button(self):
+        self.send_button.configure(state="disabled")
+
+    def enable_button(self):
+        self.send_button.configure(state="normal")
+
+    def show_info(self, massage):
+        if massage.strip():
+            self.text_area.config(state="normal")
+            self.text_area.insert(tk.END, f"{massage.upper()}\n")
+            self.text_area.config(state="disabled")
+            self.text_area.see(tk.END)
+
     def start(self):
-        self.create_interface()
         self.root.mainloop()

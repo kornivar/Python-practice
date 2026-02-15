@@ -33,6 +33,12 @@ class SModel:
 
         self.running = False
 
+    def is_connected(self):
+        if not self.accept_thread.is_alive():
+            return True
+        else:
+            return False
+
     def send(self, message):
         if self.running:
             self.conn.send(message.encode())
@@ -47,7 +53,12 @@ class SModel:
     def accept_client(self):
         self.conn, self.addr = self.server.accept()
         # logger.info("SERVER: Client connected: %s", addr)
-        threading.Thread(target=self.receive, daemon=True).start()
+
+        self.receive_thread = threading.Thread(
+            target=self.receive,
+            daemon=True
+        )
+        self.receive_thread.start()
 
     def start(self):
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -55,10 +66,28 @@ class SModel:
         self.server.listen()
         self.running = True
 
-        threading.Thread(target=self.accept_client, daemon=True).start()
+        self.accept_thread = threading.Thread(
+            target=self.accept_client,
+            daemon=True
+        )
+        self.accept_thread.start()
 
     def stop(self):
         self.running = False
-        self.t1.join()
-        self.conn.close()
-        self.server.close()
+
+        try:
+            self.conn.shutdown(socket.SHUT_RDWR)
+        except:
+            pass
+
+        try:
+            self.conn.close()
+        except:
+            pass
+
+        try:
+            self.server.close()
+        except:
+            pass
+
+        self.receive_thread.join()
