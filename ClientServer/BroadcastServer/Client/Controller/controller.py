@@ -27,7 +27,11 @@ class Controller:
 
 
     def show_message(self, message):
-        self.view.show_client_message(message)
+        self.view.show_server_message(message)
+
+
+    def send_message(self, message):
+        self.model.send(message)
 
 
     def is_connected(self):

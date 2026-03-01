@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import ttk
 
 class View:
     def __init__(self, controller):
@@ -17,22 +18,53 @@ class View:
     def create_interface(self):
         self.root.configure(background="#EAF4F9")
 
-        self.text_area = tk.Text(self.root, state="disabled", wrap="word", bg="#BFDCEB", fg="DarkBlue", insertbackground="#1C2E3A")
+        self.text_area = tk.Text(
+            self.root,
+            state="disabled",
+            wrap="word",
+            bg="#BFDCEB",
+            fg="DarkBlue",
+            insertbackground="#1C2E3A"
+        )
         self.text_area.pack(padx=10, pady=10, fill="both", expand=True)
 
         self.bottom_frame = tk.Frame(self.root)
         self.bottom_frame.pack(fill="x", padx=10, pady=5)
 
-        self.entry = tk.Entry(self.bottom_frame, bg="#F5F9FC", fg="#243B4A", insertbackground="#F5F9FC")
+        self.entry = tk.Entry(
+            self.bottom_frame,
+            bg="#F5F9FC",
+            fg="#243B4A",
+            insertbackground="#F5F9FC"
+        )
         self.entry.pack(side="left", fill="x", expand=True, padx=(0, 5))
 
-        self.send_button = tk.Button(self.bottom_frame, text="SEND MESSAGE", bg="#A0E9FF", fg="#243B4A", command=self.send_message)
+        self.combo_var = tk.StringVar()
+
+        self.combobox = ttk.Combobox(
+            self.bottom_frame,
+            textvariable=self.combo_var,
+            state="readonly",
+            values=["all"],
+            width=12
+        )
+        self.combobox.current(0)
+        self.combobox.pack(side="left", padx=(0, 5))
+
+        self.send_button = tk.Button(
+            self.bottom_frame,
+            text="SEND MESSAGE",
+            bg="#A0E9FF",
+            fg="#243B4A",
+            command=self.send_message
+        )
         self.send_button.pack(side="right")
 
 
     def send_message(self):
+        selected = self.combo_var.get()
         message = self.entry.get()
-        self.controller.send_message(message)
+        self.controller.send_message(message, selected)
         self.show_my_message(message)
 
 
@@ -52,6 +84,14 @@ class View:
             self.text_area.config(state="disabled")
             self.text_area.see(tk.END)
 
+    def show_client_message(self, massage, client_id):
+        if massage.strip():
+            self.text_area.config(state="normal")
+            self.text_area.insert(tk.END, f"Client {client_id}: {massage}\n")
+            self.text_area.config(state="disabled")
+            self.text_area.see(tk.END)
+            self.entry.delete(0, tk.END)
+
 
     def disable_button(self):
         self.send_button.configure(state="disabled")
@@ -59,6 +99,12 @@ class View:
 
     def enable_button(self):
         self.send_button.configure(state="normal")
+
+
+    def update_combobox_values(self, new_values):
+        self.combobox["values"] = new_values
+        if new_values:
+            self.combobox.current(0)
 
 
     def start(self):

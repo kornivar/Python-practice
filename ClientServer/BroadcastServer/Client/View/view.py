@@ -23,6 +23,25 @@ class View:
         self.bottom_frame = tk.Frame(self.root)
         self.bottom_frame.pack(fill="x", padx=10, pady=5)
 
+        self.entry = tk.Entry(self.bottom_frame, bg="#F5F9FC", fg="#243B4A", insertbackground="#F5F9FC")
+        self.entry.pack(side="left", fill="x", expand=True, padx=(0, 5))
+
+        self.send_button = tk.Button(self.bottom_frame, text="SEND MESSAGE", bg="#A0E9FF", fg="#243B4A", command=self.send_message)
+        self.send_button.pack(side="right")
+
+
+    def send_message(self):
+        message = self.entry.get()
+        self.controller.send_message(message)
+        self.show_my_message(message)
+
+    def show_my_message(self, massage):
+        if massage.strip():
+            self.text_area.config(state="normal")
+            self.text_area.insert(tk.END, f"Client: {massage}\n")
+            self.text_area.config(state="disabled")
+            self.text_area.see(tk.END)
+            self.entry.delete(0, tk.END)
 
     def show_server_message(self, massage):
         if massage.strip():

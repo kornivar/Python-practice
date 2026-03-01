@@ -32,6 +32,16 @@ class Model:
 
         self.running = False
 
+    def send(self, message):
+        if self.running:
+            self.client.send(message.encode())
+        else:
+            return
+
+        if message == "quit":
+            self.running = False
+            return
+
 
     def is_connected(self):
         if not self.connect_thread.is_alive():
