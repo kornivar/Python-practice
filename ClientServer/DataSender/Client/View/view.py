@@ -4,18 +4,16 @@ from tkinter import ttk
 class View:
     def __init__(self, controller):
         self.controller = controller
+
+    def create_main_interface(self):
         self.root = tk.Tk()
         self.root.title('Client')
+        self.window_width =  400
+        self.window_height = 550
 
         self.root.update_idletasks()
-        x = (self.root.winfo_screenwidth() - 400) // 2
-        y = (self.root.winfo_screenheight() - 550) // 2
-        self.root.geometry(f"{400}x{550}+{x}+{y}")
+        self.center(self.root, self.window_width, self.window_height)
 
-        self.create_interface()
-
-
-    def create_interface(self):
         self.root.configure(background="#EAF4F9")
 
         self.text_area = tk.Text(self.root, state="disabled", wrap="word", bg="#BFDCEB", fg="DarkBlue", insertbackground="#1C2E3A")
@@ -41,6 +39,12 @@ class View:
 
         self.send_button = tk.Button(self.bottom_frame, text="SEND MESSAGE", bg="#A0E9FF", fg="#243B4A", command=self.send_message)
         self.send_button.pack(side="right")
+
+    def center(self, window, width, height):
+        window.update_idletasks()
+        x = (window.winfo_screenwidth() - width) // 2
+        y = (window.winfo_screenheight() - height) // 2
+        window.geometry(f"{width}x{height}+{x}+{y}")
 
 
     def send_message(self):
@@ -82,4 +86,5 @@ class View:
         self.send_button.configure(state="normal")
 
     def start(self):
+        self.create_main_interface()
         self.root.mainloop()

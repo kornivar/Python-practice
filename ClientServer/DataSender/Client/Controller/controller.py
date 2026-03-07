@@ -1,9 +1,11 @@
-from View.view import View
+from Client.View.view import View
+from Client.View.login_window import LoginWindow
 
 class Controller:
     def __init__(self, model, queue):
         self.model = model
         self.queue = queue
+        self.login_window = LoginWindow(self)
 
         self.view = View(self)
         self.flag = False
@@ -29,10 +31,6 @@ class Controller:
     def send_message(self, message, selected = None):
         if selected is None or selected == "message":
             self.model.send(message, type_id="message")
-        elif selected == "log in":
-            self.model.send(message, type_id="log in")
-        else:
-            self.model.send(message, type_id="sign up")
 
 
     def show_message(self, message):
@@ -53,12 +51,28 @@ class Controller:
         self.view.root.after(1000, self.is_connected)
 
 
+    def verification(self, login, password, action):
+        result = self.model.verification(login, password, action)
+        if result:
+            return True
+        else:
+            return False
+
+    def check_verification(self):
+        if self.model.verified:
+            self.is_connected()
+            self.to_stop_or_not_to_stop()
+            self.view.start()
+            return True
+
+        self.view.root.after(1000, self.check_verification)
+
     def show_info(self, message):
         self.view.show_info(message)
 
 
     def start(self):
         self.model.start()
-        self.is_connected()
-        self.to_stop_or_not_to_stop()
-        self.view.start()
+        self.login_window.start()
+
+        self.check_verification()

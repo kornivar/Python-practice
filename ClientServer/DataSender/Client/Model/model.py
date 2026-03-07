@@ -9,6 +9,7 @@ class Model:
         self.ip = ip
         self.port = port
         self.queue = queue
+        self.verified = False
 
         self.running = False
 
@@ -33,19 +34,22 @@ class Model:
         self.running = False
 
 
-    def send(self, message, type_id=None):
+    def send(self, message):
         if not self.running:
             return
 
-        if type_id is None or type_id == "message":
-            self.msg_to_server(message)
-        elif type_id == "sign in":
-            self.log_in(message)
-        elif type_id == "sign up":
-            self.sign_up(message)
+        self.msg_to_server(message)
 
         if message == "stop":
             self.running = False
+
+
+    def verification(self, username, password, action):
+        if self.running:
+            if action == "login":
+                self.log_in(username, password)
+            elif action == "signup":
+                self.sign_up(username, password)
 
 
     def msg_to_server(self, message):
@@ -59,14 +63,14 @@ class Model:
             return
 
 
-    def log_in(self, password):
+    def log_in(self, username, password):
         if self.running:
             self.client.send(password.encode())
         else:
             return
 
 
-    def sign_up(self, password):
+    def sign_up(self, username, password):
         if self.running:
             self.client.send(password.encode())
         else:
