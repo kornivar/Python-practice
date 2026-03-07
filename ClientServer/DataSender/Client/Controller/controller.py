@@ -23,6 +23,7 @@ class Controller:
         if not self.model.running:
             self.view.show_info("stop used, disconnecting")
             self.model.stop()
+            self.view.root.destroy()
             return
 
         self.view.root.after(1500, self.to_stop_or_not_to_stop)
@@ -39,14 +40,14 @@ class Controller:
 
     def is_connected(self):
         if self.model.is_connected():
-            self.show_info("connected to server")
-            self.view.enable_button()
+            self.view.show_connection("connected to server")
+            self.login_window.enable_button()
             self.poll_queue()
             return
         elif not self.flag:
-            self.view.disable_button()
             self.flag = True
-            self.show_info("trying to reach the server...")
+            self.login_window.disable_button()
+            self.view.show_connection("not connected")
 
         self.view.root.after(1000, self.is_connected)
 
@@ -55,17 +56,14 @@ class Controller:
         result = self.model.verification(login, password, action)
         if result:
             return True
-        else:
-            return False
+
+        return False
 
     def check_verification(self):
         if self.model.verified:
-            self.is_connected()
             self.to_stop_or_not_to_stop()
             self.view.start()
-            return True
-
-        self.view.root.after(1000, self.check_verification)
+            return
 
     def show_info(self, message):
         self.view.show_info(message)
@@ -73,6 +71,7 @@ class Controller:
 
     def start(self):
         self.model.start()
+        self.is_connected()
         self.login_window.start()
 
         self.check_verification()

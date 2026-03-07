@@ -9,12 +9,14 @@ class Model:
         self.ip = ip
         self.port = port
         self.queue = queue
-        self.verified = False
 
+        self.verified = False
         self.running = False
 
 
     def receive(self):
+        buffer = ""
+
         while self.running:
             try:
                 data = self.client.recv(1024)
@@ -22,57 +24,85 @@ class Model:
                 if not data:
                     break
 
-                message = data.decode()
-                self.queue.put(message)
+                buffer += data.decode()
 
-                if data.decode() == "stop":
-                    self.running = False
+                while "\n" in buffer:
+                    message, buffer = buffer.split("\n", 1)
 
+                    packet = json.loads(message)
+
+                    p_type = packet["type"]
+                    p_data = packet["data"]
+
+                    if p_type == "message":
+                        self.queue.put(p_data)
+
+                    elif p_type == "response":
+                        pass
+
+                    elif p_type == "stop":
+                        self.running = False
             except:
                 break
 
         self.running = False
 
-
     def send(self, message):
         if not self.running:
             return
 
-        self.msg_to_server(message)
+        packet = json.dumps(message)
+
+        self.msg_to_server(self.to_packet(packet))
 
         if message == "stop":
             self.running = False
 
+    @staticmethod
+    def to_packet(packet, p_type ="message"):
+        if  p_type == "request":
+            packet = {
+                "type": "request",
+                "data": packet
+            }
+            return json.dumps(packet)
+        elif  p_type == "message":
+            packet = {
+                "type": "message",
+                "data": packet
+            }
+            return json.dumps(packet)
 
-    def verification(self, username, password, action):
+        return None
+
+    def verification(self, login, password, action):
+
+        packet = self.to_packet(login, password, action)
+
         if self.running:
             if action == "login":
-                self.log_in(username, password)
+                self.log_in(packet)
             elif action == "signup":
-                self.sign_up(username, password)
+                self.sign_up(packet)
 
 
-    def msg_to_server(self, message):
+    def msg_to_server(self, packet):
         if self.running:
-            self.client.send(message.encode())
-        else:
-            return
-
-        if message == "stop":
-            self.running = False
-            return
-
-
-    def log_in(self, username, password):
-        if self.running:
-            self.client.send(password.encode())
+            self.client.send((packet + '\n').encode())
         else:
             return
 
 
-    def sign_up(self, username, password):
+    def log_in(self, packet):
         if self.running:
-            self.client.send(password.encode())
+            self.client.send((packet + '\n').encode())
+        else:
+            return
+
+
+    def sign_up(self, packet):
+        if self.running:
+            self.client.send((packet + '\n').encode())
         else:
             return
 

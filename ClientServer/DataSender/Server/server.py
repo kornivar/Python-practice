@@ -1,9 +1,11 @@
 import socket
 import os
+import json
 
 HOST = '127.0.0.1'
 PORT = 4000
 FILE_PATH = 'test.txt'
+running = True
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind((HOST, PORT))
@@ -13,16 +15,11 @@ print('Server started at ' + HOST + ':' + str(PORT))
 conn, addr = server.accept()
 print('Connected by', addr)
 
-filename = os.path.basename(FILE_PATH)
-filesize = os.path.getsize(FILE_PATH)
-conn.sendall(filename.encode() + b'\n')
-conn.sendall(str(filesize).encode() + b'\n')
+data = conn.recv(1024)
+message = data.decode().strip()
+packet = json.loads(message)
+print("Server received a packet: " + message)
 
-with open(FILE_PATH, 'rb') as f:
-    while chunk := f.read(1024):
-        conn.sendall(chunk)
-
-print("File sent")
 
 conn.close()
 server.close()

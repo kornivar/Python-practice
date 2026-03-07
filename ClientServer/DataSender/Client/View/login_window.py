@@ -10,6 +10,24 @@ class LoginWindow:
         self.root.title("Login / Register")
         self.window_width = 300
         self.window_height = 180
+
+        self.frame = None
+        self.username_entry = None
+        self.password_entry = None
+        self.combo_var = None
+        self.combobox = None
+        self.submit_button = tk.Button(
+            self.frame,
+            text="Submit",
+            bg="#A0E9FF",
+            fg="#243B4A",
+            command=self.submit
+        )
+        self.root.withdraw()
+
+
+    def create_interface(self):
+        self.root.deiconify()
         self.root.update_idletasks()
         self.center(self.root, self.window_width, self.window_height)
         self.root.configure(background="#EAF4F9")
@@ -36,20 +54,15 @@ class LoginWindow:
         self.combobox.current(0)
         self.combobox.pack(pady=(0, 10))
 
-        self.submit_button = tk.Button(
-            self.frame,
-            text="Submit",
-            bg="#A0E9FF",
-            fg="#243B4A",
-            command=self.submit
-        )
         self.submit_button.pack()
 
-    def center(self, window, width, height):
+    @staticmethod
+    def center(window, width, height):
         window.update_idletasks()
         x = (window.winfo_screenwidth() - width) // 2
         y = (window.winfo_screenheight() - height) // 2
         window.geometry(f"{width}x{height}+{x}+{y}")
+
 
     def submit(self):
         username = self.username_entry.get()
@@ -62,5 +75,15 @@ class LoginWindow:
         else:
             messagebox.showerror("Error", "Username or password is incorrect")
 
+
+    def disable_button(self):
+        self.submit_button.configure(state="disabled")
+
+
+    def enable_button(self):
+        self.submit_button.configure(state="normal")
+
+
     def start(self):
+        self.create_interface()
         self.root.mainloop()

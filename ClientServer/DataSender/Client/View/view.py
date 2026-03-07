@@ -1,15 +1,29 @@
 import tkinter as tk
 from tkinter import ttk
+from tkinter import messagebox
 
 class View:
     def __init__(self, controller):
         self.controller = controller
 
-    def create_main_interface(self):
         self.root = tk.Tk()
         self.root.title('Client')
         self.window_width =  400
         self.window_height = 550
+
+        self.text_area = None
+        self.bottom_frame = None
+        self.entry = None
+        self.combo_var = None
+        self.send_button = None
+        self.bottom_frame = None
+        self.entry = None
+        self.combobox = None
+
+        self.root.withdraw()
+
+    def create_main_interface(self):
+        self.root.deiconify()
 
         self.root.update_idletasks()
         self.center(self.root, self.window_width, self.window_height)
@@ -40,7 +54,8 @@ class View:
         self.send_button = tk.Button(self.bottom_frame, text="SEND MESSAGE", bg="#A0E9FF", fg="#243B4A", command=self.send_message)
         self.send_button.pack(side="right")
 
-    def center(self, window, width, height):
+    @staticmethod
+    def center(window, width, height):
         window.update_idletasks()
         x = (window.winfo_screenwidth() - width) // 2
         y = (window.winfo_screenheight() - height) // 2
@@ -77,6 +92,10 @@ class View:
             self.text_area.config(state="disabled")
             self.text_area.see(tk.END)
 
+    @staticmethod
+    def show_connection(massage):
+        if massage.strip():
+            messagebox.showinfo("Connection Status", massage.strip())
 
     def disable_button(self):
         self.send_button.configure(state="disabled")
