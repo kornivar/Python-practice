@@ -1,28 +1,51 @@
 import socket
 import os
 import json
+import hashlib
+import threading
 
 HOST = '127.0.0.1'
 PORT = 4000
-FILE_PATH = 'test.txt'
 running = True
+DB_FILE = "database.json"
+receive_thread = None
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind((HOST, PORT))
 server.listen()
 print('Server started at ' + HOST + ':' + str(PORT))
 
-conn, addr = server.accept()
-print('Connected by', addr)
 
-def receive():
+def hash_password(password):
+    return hashlib.sha256(password.encode()).hexdigest()
+
+
+def load_db():
+    if not os.path.exists(DB_FILE):
+        db = {
+            "users": {}
+        }
+
+        with open(DB_FILE, "w") as f:
+            json.dump(db, f, indent=4)
+
+        return db
+
+    with open(DB_FILE, "r") as f:
+        return json.load(f)
+
+
+def save_db(db):
+    with open(DB_FILE, "w") as f:
+        json.dump(db, f, indent=4)
+
+
+def handle_client(conn):
     buffer = ""
-    global running
 
-    while running:
+    while True:
         try:
             data = conn.recv(1024)
-            print(f"Server received a message: {data}")
 
             if not data:
                 break
@@ -38,65 +61,71 @@ def receive():
                 p_data = packet["data"]
 
                 if p_type == "message":
+
                     if p_data == "stop":
-                        running = False
-                    else:
-                        pass
-                        print(f"Server received a message: {p_data}")
+                        conn.close()
+                        return
+
+                    print("message:", p_data)
 
                 elif p_type == "login":
-                    # login(p_data)
-                    verification()
-                    print(f"Server received a login request: {p_data}")
+                    print("login:", p_data)
+                    login(conn, p_data["username"], p_data["password"])
+
                 elif p_type == "signup":
-                    # signup(p_data)
-                    verification()
-                    print(f"Server received a signup request: {p_data}")
+                    print("signup:", p_data)
+                    signup(conn, p_data["username"], p_data["password"])
+
         except:
             break
 
+    conn.close()
 
-def send(self, message):
-    if not self.running:
+
+def verification(conn, status = True):
+    global running
+    if running:
+        temp_packet = {
+            "type": "response",
+            "data": status
+        }
+        packet = json.dumps(temp_packet)
+        conn.sendall((packet + '\n').encode())
+
+
+def login(conn, username, password):
+    db = load_db()
+
+    if username not in db["users"]:
+        verification(conn, False)
         return
 
-    packet = self.to_packet(message)
+    hashed = hash_password(password)
 
-    self.conn.sendall((packet + '\n').encode())
+    if db["users"][username]["password"] == hashed:
+        verification(conn, True)
+        return
 
-    if message == "stop":
-        self.running = False
-
-
-def verification(status = True):
-    global running
-    if running:
-        if status:
-            temp_packet = {
-                "type": "response",
-                "data": True
-            }
-            packet = json.dumps(temp_packet)
-            conn.sendall((packet + '\n').encode())
-        elif not status:
-            temp_packet = {
-                "type": "response",
-                "data": False
-            }
-            packet = json.dumps(temp_packet)
-            conn.sendall((packet + '\n').encode())
+    verification(conn, False)
 
 
-def login(login_data):
-    global running
-    if running:
-        pass
+def signup(conn, username, password):
 
+    db = load_db()
 
-def signup(signup_data):
-    global running
-    if running:
-        pass
+    if username in db["users"]:
+        verification(conn, False)
+        return
+
+    hashed = hash_password(password)
+
+    db["users"][username] = {
+        "password": hashed
+    }
+
+    save_db(db)
+
+    verification(conn, True)
 
 
 def to_packet(data, d_type="message"):
@@ -115,7 +144,22 @@ def to_packet(data, d_type="message"):
 
     return None
 
-receive()
+def start():
+    global running
 
-conn.close()
-server.close()
+    running = True
+
+    while running:
+        conn, addr = server.accept()
+        print("Connected:", addr)
+
+        thread = threading.Thread(
+            target=handle_client,
+            args=(conn,),
+            daemon=True
+        )
+
+        thread.start()
+
+load_db()
+start()

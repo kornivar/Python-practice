@@ -66,6 +66,7 @@ class Controller:
 
     def check_verification(self):
         if self.model.verified:
+            self.login_window.show_connection("Welcome!")
             self.login_window.root.destroy()
             self.to_stop_or_not_to_stop()
             self.view.start()

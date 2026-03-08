@@ -87,6 +87,10 @@ class LoginWindow:
         if message.strip():
             messagebox.showinfo("Connection Status", message.strip(), parent=self.root)
 
+    @staticmethod
+    def show_verif_status(message):
+        messagebox.showinfo("Verification status", message)
+
 
     def start(self):
         self.create_interface()

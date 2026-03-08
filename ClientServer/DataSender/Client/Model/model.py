@@ -45,13 +45,14 @@ class Model:
                             self.queue.put(p_data)
 
                     elif p_type == "response":
-                        if p_data is True:
-                            self.verified = True
+                        self.verified = p_data
 
-            except:
+            except Exception as e:
+                print("Receive error:", e)
                 break
 
         self.running = False
+        self.client.close()
 
 
     def send(self, message):
@@ -60,7 +61,8 @@ class Model:
 
         packet = self.to_packet(message)
 
-        self.client.sendall((packet + '\n').encode())
+        if packet:
+            self.client.sendall((packet + "\n").encode())
 
         if message == "stop":
             self.running = False
@@ -91,7 +93,7 @@ class Model:
 
 
     def verification(self, username, password, action):
-        if self.running:
+        if self.client:
             if action == "login":
                 data = {
                     "username": username,
@@ -108,7 +110,6 @@ class Model:
                 packet = self.to_packet(data, "signup")
                 self.client.sendall((packet + '\n').encode())
 
-
     def is_connected(self):
         if not self.connect_thread.is_alive():
             return True
@@ -120,12 +121,11 @@ class Model:
         while True:
             try:
                 self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                self.client.settimeout(5)
                 self.client.connect((self.ip, self.port))
-                self.client.settimeout(None)
                 break
-
             except (ConnectionRefusedError, socket.timeout, OSError):
+                if self.client:
+                    self.client.close()
                 time.sleep(1)
 
         self.receive_thread = threading.Thread(
@@ -153,5 +153,7 @@ class Model:
         except:
             pass
 
-        self.receive_thread.join()
+        if self.receive_thread:
+            self.receive_thread.join()
+
         print(f"Client stopped")
