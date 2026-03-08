@@ -3,10 +3,11 @@ from tkinter import ttk
 from tkinter import messagebox
 
 class LoginWindow:
-    def __init__(self, controller):
+    def __init__(self, controller, root):
         self.controller = controller
+        self.root = root
 
-        self.root = tk.Tk()
+        self.root = tk.Toplevel(root)
         self.root.title("Login / Register")
         self.window_width = 300
         self.window_height = 180
@@ -16,13 +17,7 @@ class LoginWindow:
         self.password_entry = None
         self.combo_var = None
         self.combobox = None
-        self.submit_button = tk.Button(
-            self.frame,
-            text="Submit",
-            bg="#A0E9FF",
-            fg="#243B4A",
-            command=self.submit
-        )
+        self.submit_button = None
         self.root.withdraw()
 
 
@@ -54,7 +49,15 @@ class LoginWindow:
         self.combobox.current(0)
         self.combobox.pack(pady=(0, 10))
 
+        self.submit_button = tk.Button(
+            self.frame,
+            text="Submit",
+            bg="#A0E9FF",
+            fg="#243B4A",
+            command=self.submit
+        )
         self.submit_button.pack()
+
 
     @staticmethod
     def center(window, width, height):
@@ -69,11 +72,7 @@ class LoginWindow:
         password = self.password_entry.get()
         action = self.combo_var.get()
         print(f"{action} -> Username: {username}, Password: {password}")
-        result = self.controller.verification(username, password, action)
-        if result:
-            self.root.destroy()
-        else:
-            messagebox.showerror("Error", "Username or password is incorrect")
+        self.controller.verification(username, password, action)
 
 
     def disable_button(self):
@@ -84,6 +83,10 @@ class LoginWindow:
         self.submit_button.configure(state="normal")
 
 
+    def show_connection(self, message):
+        if message.strip():
+            messagebox.showinfo("Connection Status", message.strip(), parent=self.root)
+
+
     def start(self):
         self.create_interface()
-        self.root.mainloop()

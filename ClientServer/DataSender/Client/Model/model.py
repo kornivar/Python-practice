@@ -13,6 +13,10 @@ class Model:
         self.verified = False
         self.running = False
 
+        self.client = None
+        self.receive_thread = None
+        self.connect_thread = None
+
 
     def receive(self):
         buffer = ""
@@ -35,76 +39,74 @@ class Model:
                     p_data = packet["data"]
 
                     if p_type == "message":
-                        self.queue.put(p_data)
+                        if p_data == "stop":
+                            self.running = False
+                        else:
+                            self.queue.put(p_data)
 
                     elif p_type == "response":
-                        pass
+                        if p_data is True:
+                            self.verified = True
 
-                    elif p_type == "stop":
-                        self.running = False
             except:
                 break
 
         self.running = False
 
+
     def send(self, message):
         if not self.running:
             return
 
-        packet = json.dumps(message)
+        packet = self.to_packet(message)
 
-        self.msg_to_server(self.to_packet(packet))
+        self.client.sendall((packet + '\n').encode())
 
         if message == "stop":
             self.running = False
 
+
     @staticmethod
-    def to_packet(packet, p_type ="message"):
-        if  p_type == "request":
+    def to_packet(data, d_type ="message"):
+        if  d_type == "login":
             packet = {
-                "type": "request",
-                "data": packet
+                "type": "login",
+                "data": data
             }
             return json.dumps(packet)
-        elif  p_type == "message":
+        elif d_type == "signup":
+            packet = {
+                "type": "signup",
+                "data": data
+            }
+            return json.dumps(packet)
+        elif  d_type == "message":
             packet = {
                 "type": "message",
-                "data": packet
+                "data": data
             }
             return json.dumps(packet)
 
         return None
 
-    def verification(self, login, password, action):
 
-        packet = self.to_packet(login, password, action)
-
+    def verification(self, username, password, action):
         if self.running:
             if action == "login":
-                self.log_in(packet)
+                data = {
+                    "username": username,
+                    "password": password,
+                }
+                packet = self.to_packet(data, "login")
+                self.client.sendall((packet + '\n').encode())
+
             elif action == "signup":
-                self.sign_up(packet)
-
-
-    def msg_to_server(self, packet):
-        if self.running:
-            self.client.send((packet + '\n').encode())
-        else:
-            return
-
-
-    def log_in(self, packet):
-        if self.running:
-            self.client.send((packet + '\n').encode())
-        else:
-            return
-
-
-    def sign_up(self, packet):
-        if self.running:
-            self.client.send((packet + '\n').encode())
-        else:
-            return
+                data = {
+                    "username": username,
+                    "password": password,
+                }
+                packet = self.to_packet(data, "signup")
+                self.client.sendall((packet + '\n').encode())
 
 
     def is_connected(self):

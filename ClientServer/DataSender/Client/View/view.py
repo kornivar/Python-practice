@@ -2,11 +2,13 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 
-class View:
-    def __init__(self, controller):
-        self.controller = controller
 
-        self.root = tk.Tk()
+class View:
+    def __init__(self, controller, root):
+        self.controller = controller
+        self.root = root
+
+        self.root = tk.Toplevel(root)
         self.root.title('Client')
         self.window_width =  400
         self.window_height = 550
@@ -92,10 +94,6 @@ class View:
             self.text_area.config(state="disabled")
             self.text_area.see(tk.END)
 
-    @staticmethod
-    def show_connection(massage):
-        if massage.strip():
-            messagebox.showinfo("Connection Status", massage.strip())
 
     def disable_button(self):
         self.send_button.configure(state="disabled")
@@ -104,6 +102,6 @@ class View:
     def enable_button(self):
         self.send_button.configure(state="normal")
 
+
     def start(self):
         self.create_main_interface()
-        self.root.mainloop()

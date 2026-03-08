@@ -1,13 +1,18 @@
 from Client.View.view import View
 from Client.View.login_window import LoginWindow
+import tkinter as tk
 
 class Controller:
     def __init__(self, model, queue):
         self.model = model
         self.queue = queue
-        self.login_window = LoginWindow(self)
 
-        self.view = View(self)
+        self.root = tk.Tk()
+        self.root.withdraw()
+
+        self.login_window = LoginWindow(self, self.root)
+        self.view = View(self, self.root)
+
         self.flag = False
 
 
@@ -31,7 +36,7 @@ class Controller:
 
     def send_message(self, message, selected = None):
         if selected is None or selected == "message":
-            self.model.send(message, type_id="message")
+            self.model.send(message)
 
 
     def show_message(self, message):
@@ -40,30 +45,34 @@ class Controller:
 
     def is_connected(self):
         if self.model.is_connected():
-            self.view.show_connection("connected to server")
+            self.login_window.show_connection("connected to server")
             self.login_window.enable_button()
             self.poll_queue()
             return
         elif not self.flag:
             self.flag = True
             self.login_window.disable_button()
-            self.view.show_connection("not connected")
+            self.login_window.show_connection("not connected")
 
         self.view.root.after(1000, self.is_connected)
 
 
-    def verification(self, login, password, action):
-        result = self.model.verification(login, password, action)
-        if result:
-            return True
+    def verification(self, username, password, action):
+        print("Verification method called in Controller")
+        self.model.verification(username, password, action)
+        print("Checking verification in Controller")
+        self.check_verification()
 
-        return False
 
     def check_verification(self):
         if self.model.verified:
+            self.login_window.root.destroy()
             self.to_stop_or_not_to_stop()
             self.view.start()
             return
+
+        self.view.root.after(200, self.check_verification)
+
 
     def show_info(self, message):
         self.view.show_info(message)
@@ -71,7 +80,6 @@ class Controller:
 
     def start(self):
         self.model.start()
-        self.is_connected()
         self.login_window.start()
-
-        self.check_verification()
+        self.is_connected()
+        self.root.mainloop()
