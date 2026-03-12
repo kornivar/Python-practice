@@ -1,5 +1,6 @@
 from Client.View.view import View
 from Client.View.login_window import LoginWindow
+from Client.View.upload_pfp_window import UploadPFPWindow
 import tkinter as tk
 
 class Controller:
@@ -11,6 +12,7 @@ class Controller:
         self.root.withdraw()
 
         self.login_window = LoginWindow(self, self.root)
+        self.upload_pfp_window = UploadPFPWindow(self, self.root)
         self.view = View(self, self.root)
 
         self.flag = False
@@ -68,12 +70,20 @@ class Controller:
         if self.model.verified:
             self.login_window.show_connection("Welcome!")
             self.login_window.root.destroy()
-            self.to_stop_or_not_to_stop()
-            self.view.start()
+            self.upload_pfp_window.start()
             return
 
         self.view.root.after(200, self.check_verification)
 
+
+    def avatar_selected(self, file_path):
+        print("Avatar selected method called in Controller: " + file_path)
+
+        if file_path:
+            self.model.send_avatar(file_path)
+
+        self.to_stop_or_not_to_stop()
+        self.view.start()
 
     def show_info(self, message):
         self.view.show_info(message)

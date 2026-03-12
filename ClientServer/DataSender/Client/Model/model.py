@@ -2,6 +2,7 @@ import socket
 import threading
 import time
 import queue
+import os
 import json
 
 class Model:
@@ -16,6 +17,8 @@ class Model:
         self.client = None
         self.receive_thread = None
         self.connect_thread = None
+
+        self.username = None
 
 
     def receive(self):
@@ -67,6 +70,31 @@ class Model:
         if message == "stop":
             self.running = False
 
+    def send_avatar(self, file_path):
+        if not self.running:
+            return
+
+        size = os.path.getsize(file_path)
+        filename = os.path.basename(file_path)
+
+        packet = {
+            "type": "avatar",
+            "data": {
+                "username": self.username,
+                "filename": filename,
+                "size": size
+            }
+        }
+
+        self.client.sendall((json.dumps(packet) + "\n").encode())
+
+        with open(file_path, "rb") as f:
+            while True:
+                chunk = f.read(4096)
+                if not chunk:
+                    break
+                self.client.sendall(chunk)
+
 
     @staticmethod
     def to_packet(data, d_type ="message"):
@@ -95,6 +123,7 @@ class Model:
     def verification(self, username, password, action):
         if self.client:
             if action == "login":
+                self.username = username
                 data = {
                     "username": username,
                     "password": password,
@@ -103,12 +132,14 @@ class Model:
                 self.client.sendall((packet + '\n').encode())
 
             elif action == "signup":
+                self.username = username
                 data = {
                     "username": username,
                     "password": password,
                 }
                 packet = self.to_packet(data, "signup")
                 self.client.sendall((packet + '\n').encode())
+
 
     def is_connected(self):
         if not self.connect_thread.is_alive():

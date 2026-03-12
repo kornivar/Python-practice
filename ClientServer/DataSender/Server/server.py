@@ -4,10 +4,14 @@ import json
 import hashlib
 import threading
 
+# generates a random 128-bit number, which almost guarantied to be unique (3f8c5d7a-6c4e-4d61-9c32-7d0c4e2a9f0f)
+import uuid
+
 HOST = '127.0.0.1'
 PORT = 4000
 running = True
 DB_FILE = "database.json"
+AVATAR_DIR = "avatars"
 receive_thread = None
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -76,13 +80,50 @@ def handle_client(conn):
                     print("signup:", p_data)
                     signup(conn, p_data["username"], p_data["password"])
 
+                elif p_type == "avatar":
+                    print("avatar:", p_data)
+                    username = p_data["username"]
+                    filename = p_data["filename"]
+                    size = p_data["size"]
+
+                    receive_avatar(conn, username, filename, size)
+
         except:
             break
 
     conn.close()
 
 
-def verification(conn, status = True):
+def receive_avatar(conn, username, filename, size):
+    ext = filename.split(".")[-1]
+    unique_name = str(uuid.uuid4()) + "." + ext
+
+    path = os.path.join(AVATAR_DIR, unique_name)
+
+    received = 0
+
+    with open(path, "wb") as f:
+        while received < size:
+
+            chunk = conn.recv(min(4096, size - received))
+
+            if not chunk:
+                break
+
+            f.write(chunk)
+            received += len(chunk)
+
+    set_avatar(username, path)
+
+
+def set_avatar(username, path):
+    db = load_db()
+
+    db["users"][username]["avatar"] = path
+    save_db(db)
+
+
+def verification(conn, status):
     global running
     if running:
         temp_packet = {
@@ -110,7 +151,6 @@ def login(conn, username, password):
 
 
 def signup(conn, username, password):
-
     db = load_db()
 
     if username in db["users"]:
@@ -120,7 +160,8 @@ def signup(conn, username, password):
     hashed = hash_password(password)
 
     db["users"][username] = {
-        "password": hashed
+        "password": hashed,
+        "avatar": None
     }
 
     save_db(db)
