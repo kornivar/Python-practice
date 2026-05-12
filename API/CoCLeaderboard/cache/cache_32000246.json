@@ -1,0 +1,1021 @@
+{
+    "25_None": {
+        "items": [
+            {
+                "tag": "#PGLGUVV0",
+                "name": "Украина",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/R-02-BrkjhQR8kq5TyzaRLT2ZSISoeFLTdYW2EsX-GE.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/R-02-BrkjhQR8kq5TyzaRLT2ZSISoeFLTdYW2EsX-GE.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/R-02-BrkjhQR8kq5TyzaRLT2ZSISoeFLTdYW2EsX-GE.png"
+                },
+                "clanLevel": 40,
+                "members": 49,
+                "clanPoints": 261413,
+                "rank": 1,
+                "previousRank": 1
+            },
+            {
+                "tag": "#2QQQ9GUCR",
+                "name": "Ukraine forever",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/jfoU7RmECAR0YkahuW5NYbKhlJwuuvJVg-X1K_oJZ5I.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/jfoU7RmECAR0YkahuW5NYbKhlJwuuvJVg-X1K_oJZ5I.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/jfoU7RmECAR0YkahuW5NYbKhlJwuuvJVg-X1K_oJZ5I.png"
+                },
+                "clanLevel": 30,
+                "members": 46,
+                "clanPoints": 244006,
+                "rank": 2,
+                "previousRank": 2
+            },
+            {
+                "tag": "#2RQJ2Q2QL",
+                "name": "Садок Вишневий",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/jfN1pvPbXJwmwlAJ20XjsZjjXWFbAVEAsZZeVk5--XM.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/jfN1pvPbXJwmwlAJ20XjsZjjXWFbAVEAsZZeVk5--XM.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/jfN1pvPbXJwmwlAJ20XjsZjjXWFbAVEAsZZeVk5--XM.png"
+                },
+                "clanLevel": 19,
+                "members": 39,
+                "clanPoints": 206923,
+                "rank": 3,
+                "previousRank": 3
+            },
+            {
+                "tag": "#2QJL89GRR",
+                "name": "Ukraine Gang",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/-xIz1bhKSu8WxsVT5JZZ9Kg6G7T-1XCtPEWIFlyMY3w.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/-xIz1bhKSu8WxsVT5JZZ9Kg6G7T-1XCtPEWIFlyMY3w.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/-xIz1bhKSu8WxsVT5JZZ9Kg6G7T-1XCtPEWIFlyMY3w.png"
+                },
+                "clanLevel": 25,
+                "members": 48,
+                "clanPoints": 201321,
+                "rank": 4,
+                "previousRank": 4
+            },
+            {
+                "tag": "#PC8LPUL2",
+                "name": "UKRAINE™",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/T2ubzzhdKDChkA99jkFzSYP5KEUSsDXpt5exx8PMFj0.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/T2ubzzhdKDChkA99jkFzSYP5KEUSsDXpt5exx8PMFj0.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/T2ubzzhdKDChkA99jkFzSYP5KEUSsDXpt5exx8PMFj0.png"
+                },
+                "clanLevel": 34,
+                "members": 43,
+                "clanPoints": 170009,
+                "rank": 5,
+                "previousRank": 5
+            },
+            {
+                "tag": "#U02C9UYC",
+                "name": "kr.ua",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/fl8uZfwP1tJY85g1z6JoRl-qLK6cqmCT7eK9mYz7cEQ.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/fl8uZfwP1tJY85g1z6JoRl-qLK6cqmCT7eK9mYz7cEQ.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/fl8uZfwP1tJY85g1z6JoRl-qLK6cqmCT7eK9mYz7cEQ.png"
+                },
+                "clanLevel": 35,
+                "members": 46,
+                "clanPoints": 160131,
+                "rank": 6,
+                "previousRank": 6
+            },
+            {
+                "tag": "#2Q2G0G9GU",
+                "name": "ФОРТЕЦЯ",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/sxXML59fC64AZwyeZOHt3GbuVOklqDgGsQdhIgwRXsg.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/sxXML59fC64AZwyeZOHt3GbuVOklqDgGsQdhIgwRXsg.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/sxXML59fC64AZwyeZOHt3GbuVOklqDgGsQdhIgwRXsg.png"
+                },
+                "clanLevel": 25,
+                "members": 43,
+                "clanPoints": 157586,
+                "rank": 7,
+                "previousRank": 7
+            },
+            {
+                "tag": "#2G92VPPCQ",
+                "name": "V A L H A L L A",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/xzGFjzqAoS7WEI_Lo25VwWY1n3BREFW9WczoloLU4O8.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/xzGFjzqAoS7WEI_Lo25VwWY1n3BREFW9WczoloLU4O8.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/xzGFjzqAoS7WEI_Lo25VwWY1n3BREFW9WczoloLU4O8.png"
+                },
+                "clanLevel": 18,
+                "members": 50,
+                "clanPoints": 155675,
+                "rank": 8,
+                "previousRank": 8
+            },
+            {
+                "tag": "#2Y09P8RRV",
+                "name": "KIEV UA",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/0aeZvpUQIuyfxzlxWTRU6BxRFlgpjfrZbqsKrXQ7JVE.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/0aeZvpUQIuyfxzlxWTRU6BxRFlgpjfrZbqsKrXQ7JVE.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/0aeZvpUQIuyfxzlxWTRU6BxRFlgpjfrZbqsKrXQ7JVE.png"
+                },
+                "clanLevel": 31,
+                "members": 47,
+                "clanPoints": 155169,
+                "rank": 9,
+                "previousRank": 9
+            },
+            {
+                "tag": "#29QVCPR9R",
+                "name": "\"Gamer\"",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/TlRoodCDu8QjeN6lXaBjF_qjQwwpzn4Jw__4aLgW4uI.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/TlRoodCDu8QjeN6lXaBjF_qjQwwpzn4Jw__4aLgW4uI.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/TlRoodCDu8QjeN6lXaBjF_qjQwwpzn4Jw__4aLgW4uI.png"
+                },
+                "clanLevel": 32,
+                "members": 48,
+                "clanPoints": 153122,
+                "rank": 10,
+                "previousRank": 10
+            },
+            {
+                "tag": "#C02CRJV",
+                "name": "Днепр 18+",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/xiuamQX-rHxS6pfKqXnvt5_LRZ29RQYFeBRSjxJD6CI.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/xiuamQX-rHxS6pfKqXnvt5_LRZ29RQYFeBRSjxJD6CI.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/xiuamQX-rHxS6pfKqXnvt5_LRZ29RQYFeBRSjxJD6CI.png"
+                },
+                "clanLevel": 37,
+                "members": 48,
+                "clanPoints": 150000,
+                "rank": 11,
+                "previousRank": 11
+            },
+            {
+                "tag": "#U08RJ88Y",
+                "name": "Україна",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/gOKEqka8l9jk-A6G0lhBPaxsOPeKePlRvvENeZtFy5A.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/gOKEqka8l9jk-A6G0lhBPaxsOPeKePlRvvENeZtFy5A.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/gOKEqka8l9jk-A6G0lhBPaxsOPeKePlRvvENeZtFy5A.png"
+                },
+                "clanLevel": 36,
+                "members": 50,
+                "clanPoints": 149500,
+                "rank": 12,
+                "previousRank": 13
+            },
+            {
+                "tag": "#PGV2RGP0",
+                "name": "UKRAINE DEAF",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/jZj89eM4s5PmT-MoVhLJf8a9zXpIOv5DIW5F8PFQh18.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/jZj89eM4s5PmT-MoVhLJf8a9zXpIOv5DIW5F8PFQh18.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/jZj89eM4s5PmT-MoVhLJf8a9zXpIOv5DIW5F8PFQh18.png"
+                },
+                "clanLevel": 33,
+                "members": 43,
+                "clanPoints": 149495,
+                "rank": 13,
+                "previousRank": 12
+            },
+            {
+                "tag": "#JQGVVG2U",
+                "name": "frideu",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/mfnJjKiTcOR0YArpdgTX14l5IQJZ6vE5FP_kxhBi-G8.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/mfnJjKiTcOR0YArpdgTX14l5IQJZ6vE5FP_kxhBi-G8.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/mfnJjKiTcOR0YArpdgTX14l5IQJZ6vE5FP_kxhBi-G8.png"
+                },
+                "clanLevel": 35,
+                "members": 47,
+                "clanPoints": 148500,
+                "rank": 14,
+                "previousRank": 14
+            },
+            {
+                "tag": "#2J2YC80QJ",
+                "name": "Active Var",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/AIOjOYrYD4jWD90_QHswvlhJqWhMdOKDK_0R0Lj-YKs.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/AIOjOYrYD4jWD90_QHswvlhJqWhMdOKDK_0R0Lj-YKs.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/AIOjOYrYD4jWD90_QHswvlhJqWhMdOKDK_0R0Lj-YKs.png"
+                },
+                "clanLevel": 20,
+                "members": 31,
+                "clanPoints": 147763,
+                "rank": 15,
+                "previousRank": 15
+            },
+            {
+                "tag": "#2P2JRJYCG",
+                "name": "ASCENDANT",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/tLjJxgM-zy6Nbzpwtq_tulbYfUibsaS7Wb-60cHXLS0.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/tLjJxgM-zy6Nbzpwtq_tulbYfUibsaS7Wb-60cHXLS0.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/tLjJxgM-zy6Nbzpwtq_tulbYfUibsaS7Wb-60cHXLS0.png"
+                },
+                "clanLevel": 30,
+                "members": 43,
+                "clanPoints": 146434,
+                "rank": 16,
+                "previousRank": 16
+            },
+            {
+                "tag": "#20RYPJ09",
+                "name": "Одесса",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/iWn86RnlaXVhQ5DUgo9GLlrDmxYrF7RqZ6oHu_BBW78.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/iWn86RnlaXVhQ5DUgo9GLlrDmxYrF7RqZ6oHu_BBW78.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/iWn86RnlaXVhQ5DUgo9GLlrDmxYrF7RqZ6oHu_BBW78.png"
+                },
+                "clanLevel": 36,
+                "members": 46,
+                "clanPoints": 145309,
+                "rank": 17,
+                "previousRank": 17
+            },
+            {
+                "tag": "#QVU92RPL",
+                "name": "-LEMBERG-",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/S9H9-c7__DclaWVJj56ghxqDTZMnxiWWzWr0LIOnOPo.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/S9H9-c7__DclaWVJj56ghxqDTZMnxiWWzWr0LIOnOPo.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/S9H9-c7__DclaWVJj56ghxqDTZMnxiWWzWr0LIOnOPo.png"
+                },
+                "clanLevel": 32,
+                "members": 50,
+                "clanPoints": 145229,
+                "rank": 18,
+                "previousRank": 18
+            },
+            {
+                "tag": "#2JUJY2YQJ",
+                "name": "KaNdiNsat",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/IbFVAGiEgkPjqnkzCbKiF6Bnye2sfK_7CvJZHvberE4.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/IbFVAGiEgkPjqnkzCbKiF6Bnye2sfK_7CvJZHvberE4.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/IbFVAGiEgkPjqnkzCbKiF6Bnye2sfK_7CvJZHvberE4.png"
+                },
+                "clanLevel": 15,
+                "members": 49,
+                "clanPoints": 145136,
+                "rank": 19,
+                "previousRank": 20
+            },
+            {
+                "tag": "#2GP22JQUJ",
+                "name": "Золоті крила",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/KCIcpOdrGgh5r-m12B0yqdkcLDzy5WW5R7rxB5JGQaU.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/KCIcpOdrGgh5r-m12B0yqdkcLDzy5WW5R7rxB5JGQaU.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/KCIcpOdrGgh5r-m12B0yqdkcLDzy5WW5R7rxB5JGQaU.png"
+                },
+                "clanLevel": 23,
+                "members": 45,
+                "clanPoints": 145000,
+                "rank": 20,
+                "previousRank": 19
+            },
+            {
+                "tag": "#Y2JPC99L",
+                "name": "Adequate",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/xep2HQqk6MR8GERg3MVFPcs5OOKcDynNmxNJTMy3pQo.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/xep2HQqk6MR8GERg3MVFPcs5OOKcDynNmxNJTMy3pQo.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/xep2HQqk6MR8GERg3MVFPcs5OOKcDynNmxNJTMy3pQo.png"
+                },
+                "clanLevel": 34,
+                "members": 48,
+                "clanPoints": 144000,
+                "rank": 21,
+                "previousRank": 21
+            },
+            {
+                "tag": "#VJ0UP2U8",
+                "name": "STORYUS",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/6S0OcS0v8RXr5Gx6GSNqGy85R1GAx0R0UmvxvbNtBF0.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/6S0OcS0v8RXr5Gx6GSNqGy85R1GAx0R0UmvxvbNtBF0.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/6S0OcS0v8RXr5Gx6GSNqGy85R1GAx0R0UmvxvbNtBF0.png"
+                },
+                "clanLevel": 33,
+                "members": 47,
+                "clanPoints": 142750,
+                "rank": 22,
+                "previousRank": 22
+            },
+            {
+                "tag": "#UPJ0YPUG",
+                "name": "Нова Імперія",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/GSlJ7UQ3S9eXlPvpmEg6VN_BJX9YOHiLprb_j6KYO2k.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/GSlJ7UQ3S9eXlPvpmEg6VN_BJX9YOHiLprb_j6KYO2k.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/GSlJ7UQ3S9eXlPvpmEg6VN_BJX9YOHiLprb_j6KYO2k.png"
+                },
+                "clanLevel": 33,
+                "members": 36,
+                "clanPoints": 141500,
+                "rank": 23,
+                "previousRank": 23
+            },
+            {
+                "tag": "#2QRR9YLLR",
+                "name": "Ukraine Gang Cw",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/dhY8ZUT84E_lUwfVCacBoT_38qaj3ry4RPuEH8K3ldA.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/dhY8ZUT84E_lUwfVCacBoT_38qaj3ry4RPuEH8K3ldA.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/dhY8ZUT84E_lUwfVCacBoT_38qaj3ry4RPuEH8K3ldA.png"
+                },
+                "clanLevel": 16,
+                "members": 42,
+                "clanPoints": 140500,
+                "rank": 24,
+                "previousRank": 24
+            },
+            {
+                "tag": "#2GPJUG8YG",
+                "name": "СИЛА і ЧЕСТЬ",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/IUp1354YxlNaGBtFJw0zUTNzqAg0oeHug3SYvwaJ2ek.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/IUp1354YxlNaGBtFJw0zUTNzqAg0oeHug3SYvwaJ2ek.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/IUp1354YxlNaGBtFJw0zUTNzqAg0oeHug3SYvwaJ2ek.png"
+                },
+                "clanLevel": 25,
+                "members": 43,
+                "clanPoints": 140250,
+                "rank": 25,
+                "previousRank": 25
+            }
+        ],
+        "paging": {
+            "cursors": {
+                "after": "eyJwb3MiOjI1fQ"
+            }
+        }
+    },
+    "25_eyJwb3MiOjI1fQ": {
+        "items": [
+            {
+                "tag": "#Q9YVP8L8",
+                "name": "крутой пацани",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/ZPBZG6A1WoSIbgWJgYoEUP-IJhYxZsxchcxqR0ynwhA.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/ZPBZG6A1WoSIbgWJgYoEUP-IJhYxZsxchcxqR0ynwhA.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/ZPBZG6A1WoSIbgWJgYoEUP-IJhYxZsxchcxqR0ynwhA.png"
+                },
+                "clanLevel": 24,
+                "members": 39,
+                "clanPoints": 140000,
+                "rank": 26,
+                "previousRank": 26
+            },
+            {
+                "tag": "#2GYGCPV",
+                "name": "UKRAINE",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/q0AZlr7Tr1FEa3qcKBp-pcE0e8Oc17zEXXytV5YtFEs.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/q0AZlr7Tr1FEa3qcKBp-pcE0e8Oc17zEXXytV5YtFEs.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/q0AZlr7Tr1FEa3qcKBp-pcE0e8Oc17zEXXytV5YtFEs.png"
+                },
+                "clanLevel": 38,
+                "members": 49,
+                "clanPoints": 138500,
+                "rank": 27,
+                "previousRank": 27
+            },
+            {
+                "tag": "#2YY8C02P",
+                "name": "$$$UKRAINE$$$",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/moUobgaT2S5P7iqsEXBuZ4aqIL3dOvI52bWveJx1NlY.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/moUobgaT2S5P7iqsEXBuZ4aqIL3dOvI52bWveJx1NlY.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/moUobgaT2S5P7iqsEXBuZ4aqIL3dOvI52bWveJx1NlY.png"
+                },
+                "clanLevel": 38,
+                "members": 47,
+                "clanPoints": 137250,
+                "rank": 28,
+                "previousRank": 28
+            },
+            {
+                "tag": "#899J8ULU",
+                "name": "KIEV KOZAKS XL",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/Qxb-mmN8DcEykRUjmhwYjTNS_T8HYzgBXjl-LSLUB7Q.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/Qxb-mmN8DcEykRUjmhwYjTNS_T8HYzgBXjl-LSLUB7Q.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/Qxb-mmN8DcEykRUjmhwYjTNS_T8HYzgBXjl-LSLUB7Q.png"
+                },
+                "clanLevel": 37,
+                "members": 46,
+                "clanPoints": 136250,
+                "rank": 29,
+                "previousRank": 29
+            },
+            {
+                "tag": "#2L08UCGJR",
+                "name": "Ukraine",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/nl5BXfF4j8D2iiiJ6YAK4k6vnzaqa2qDGO_bn3FXxY0.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/nl5BXfF4j8D2iiiJ6YAK4k6vnzaqa2qDGO_bn3FXxY0.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/nl5BXfF4j8D2iiiJ6YAK4k6vnzaqa2qDGO_bn3FXxY0.png"
+                },
+                "clanLevel": 32,
+                "members": 41,
+                "clanPoints": 136000,
+                "rank": 30,
+                "previousRank": 30
+            },
+            {
+                "tag": "#8L222V2L",
+                "name": "Харьков",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/AZnDUaAd4r2iSFEU6kgpiRjvA-d0qZnTuJcZquMZNig.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/AZnDUaAd4r2iSFEU6kgpiRjvA-d0qZnTuJcZquMZNig.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/AZnDUaAd4r2iSFEU6kgpiRjvA-d0qZnTuJcZquMZNig.png"
+                },
+                "clanLevel": 34,
+                "members": 45,
+                "clanPoints": 136000,
+                "rank": 31,
+                "previousRank": 31
+            },
+            {
+                "tag": "#9UL9LQCC",
+                "name": "Sky Ukraine",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/Cgk2SHDgwZxNQzi31pBShYvMhuU4rTi6UQNb0O9dYwU.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/Cgk2SHDgwZxNQzi31pBShYvMhuU4rTi6UQNb0O9dYwU.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/Cgk2SHDgwZxNQzi31pBShYvMhuU4rTi6UQNb0O9dYwU.png"
+                },
+                "clanLevel": 25,
+                "members": 42,
+                "clanPoints": 135500,
+                "rank": 32,
+                "previousRank": 32
+            },
+            {
+                "tag": "#2LJPVQYGP",
+                "name": "|×|_ReLaX_|×|",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/9wnVq4qndLIJvdEEp_9z7xJM4dBS7dPnt24Z5sEbMjE.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/9wnVq4qndLIJvdEEp_9z7xJM4dBS7dPnt24Z5sEbMjE.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/9wnVq4qndLIJvdEEp_9z7xJM4dBS7dPnt24Z5sEbMjE.png"
+                },
+                "clanLevel": 29,
+                "members": 38,
+                "clanPoints": 134250,
+                "rank": 33,
+                "previousRank": 33
+            },
+            {
+                "tag": "#GQG2CRP",
+                "name": "\"СТАРАЯ ТЕЛЕГА\"",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/k-Rbx_bPorfcPxCS5IFuJVpkq2eaQm_tHh9z3DlJ1t4.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/k-Rbx_bPorfcPxCS5IFuJVpkq2eaQm_tHh9z3DlJ1t4.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/k-Rbx_bPorfcPxCS5IFuJVpkq2eaQm_tHh9z3DlJ1t4.png"
+                },
+                "clanLevel": 38,
+                "members": 47,
+                "clanPoints": 132750,
+                "rank": 34,
+                "previousRank": 34
+            },
+            {
+                "tag": "#RV29PRGY",
+                "name": "P.E.K.K.A",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/kgFTEEO4uXeWbWRbHiJkmugDMlHa46AaxLL1eKfYf0A.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/kgFTEEO4uXeWbWRbHiJkmugDMlHa46AaxLL1eKfYf0A.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/kgFTEEO4uXeWbWRbHiJkmugDMlHa46AaxLL1eKfYf0A.png"
+                },
+                "clanLevel": 29,
+                "members": 33,
+                "clanPoints": 131750,
+                "rank": 35,
+                "previousRank": 35
+            },
+            {
+                "tag": "#2G88LJPL9",
+                "name": "UKRAINE",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/dk47YLgx3njq7iyXTlDxDQqei0YzOsR73NpmfMRxvgo.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/dk47YLgx3njq7iyXTlDxDQqei0YzOsR73NpmfMRxvgo.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/dk47YLgx3njq7iyXTlDxDQqei0YzOsR73NpmfMRxvgo.png"
+                },
+                "clanLevel": 19,
+                "members": 39,
+                "clanPoints": 130766,
+                "rank": 36,
+                "previousRank": 36
+            },
+            {
+                "tag": "#9QPJQL8",
+                "name": "Lviv",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/bnEbfXixmn_ml2UtotSS-hODucnnPWd7mXi25KEJxas.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/bnEbfXixmn_ml2UtotSS-hODucnnPWd7mXi25KEJxas.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/bnEbfXixmn_ml2UtotSS-hODucnnPWd7mXi25KEJxas.png"
+                },
+                "clanLevel": 37,
+                "members": 48,
+                "clanPoints": 130250,
+                "rank": 37,
+                "previousRank": 37
+            },
+            {
+                "tag": "#L0CY2920",
+                "name": "У.К.Р.А.Ї.Н.А.",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/Rt0JyjotZ7Pyj8jLG4vKdZFWOyHFLHFlEbaudHakHR8.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/Rt0JyjotZ7Pyj8jLG4vKdZFWOyHFLHFlEbaudHakHR8.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/Rt0JyjotZ7Pyj8jLG4vKdZFWOyHFLHFlEbaudHakHR8.png"
+                },
+                "clanLevel": 29,
+                "members": 46,
+                "clanPoints": 130000,
+                "rank": 38,
+                "previousRank": 38
+            },
+            {
+                "tag": "#LLCRPCLV",
+                "name": "Mars",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/YC52yK7hWSVPBVCNHd5QnANWDF-7gI1Rx_EoTNzYlys.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/YC52yK7hWSVPBVCNHd5QnANWDF-7gI1Rx_EoTNzYlys.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/YC52yK7hWSVPBVCNHd5QnANWDF-7gI1Rx_EoTNzYlys.png"
+                },
+                "clanLevel": 35,
+                "members": 43,
+                "clanPoints": 129000,
+                "rank": 39,
+                "previousRank": 40
+            },
+            {
+                "tag": "#2G9VRGUJG",
+                "name": "+W",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/dIS9rh4l9xTFBDK2pAEAE_FfECZN036tNnCD3LEQGVE.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/dIS9rh4l9xTFBDK2pAEAE_FfECZN036tNnCD3LEQGVE.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/dIS9rh4l9xTFBDK2pAEAE_FfECZN036tNnCD3LEQGVE.png"
+                },
+                "clanLevel": 19,
+                "members": 48,
+                "clanPoints": 128250,
+                "rank": 40,
+                "previousRank": 39
+            },
+            {
+                "tag": "#GQRLPVLY",
+                "name": "Warriors",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/tQJf9cVLFpRcmSK6B6abMEibnLnFrivv19qMYediAbY.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/tQJf9cVLFpRcmSK6B6abMEibnLnFrivv19qMYediAbY.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/tQJf9cVLFpRcmSK6B6abMEibnLnFrivv19qMYediAbY.png"
+                },
+                "clanLevel": 26,
+                "members": 38,
+                "clanPoints": 127750,
+                "rank": 41,
+                "previousRank": 41
+            },
+            {
+                "tag": "#QRQUPPU0",
+                "name": "Лицарі Волині",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/ZEry-sdW5pNu8FWiNEACwx_1JlU9zfCjs2fZYawdcKc.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/ZEry-sdW5pNu8FWiNEACwx_1JlU9zfCjs2fZYawdcKc.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/ZEry-sdW5pNu8FWiNEACwx_1JlU9zfCjs2fZYawdcKc.png"
+                },
+                "clanLevel": 35,
+                "members": 40,
+                "clanPoints": 127750,
+                "rank": 42,
+                "previousRank": 42
+            },
+            {
+                "tag": "#2JCYQRVPL",
+                "name": "Gang",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/FtaL_5OJG0QaEmgo-HnAQipG5t336TDcs59c6h-lLS8.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/FtaL_5OJG0QaEmgo-HnAQipG5t336TDcs59c6h-lLS8.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/FtaL_5OJG0QaEmgo-HnAQipG5t336TDcs59c6h-lLS8.png"
+                },
+                "clanLevel": 9,
+                "members": 46,
+                "clanPoints": 126500,
+                "rank": 43,
+                "previousRank": 53
+            },
+            {
+                "tag": "#8GPCPR2Q",
+                "name": "одесса",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/myuc3XdURv9epdkjRm_su4cmZ-rw0IWq2mtI7xPwFzU.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/myuc3XdURv9epdkjRm_su4cmZ-rw0IWq2mtI7xPwFzU.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/myuc3XdURv9epdkjRm_su4cmZ-rw0IWq2mtI7xPwFzU.png"
+                },
+                "clanLevel": 33,
+                "members": 48,
+                "clanPoints": 126250,
+                "rank": 44,
+                "previousRank": 45
+            },
+            {
+                "tag": "#PQGY9JLP",
+                "name": "ДОМІВКА",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/QEFFpY_0mZOykBWkecc7mRbx2vjfVtoPDkDcnyTSXrM.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/QEFFpY_0mZOykBWkecc7mRbx2vjfVtoPDkDcnyTSXrM.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/QEFFpY_0mZOykBWkecc7mRbx2vjfVtoPDkDcnyTSXrM.png"
+                },
+                "clanLevel": 33,
+                "members": 38,
+                "clanPoints": 126100,
+                "rank": 45,
+                "previousRank": 54
+            },
+            {
+                "tag": "#J0JVL82",
+                "name": "Тернопіль'",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/6a6-jDcSiDp_ETPPMRVuxv0xCOV7JZ-PWhzSPe6sLWE.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/6a6-jDcSiDp_ETPPMRVuxv0xCOV7JZ-PWhzSPe6sLWE.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/6a6-jDcSiDp_ETPPMRVuxv0xCOV7JZ-PWhzSPe6sLWE.png"
+                },
+                "clanLevel": 33,
+                "members": 36,
+                "clanPoints": 125900,
+                "rank": 46,
+                "previousRank": 47
+            },
+            {
+                "tag": "#LJLQGQ0J",
+                "name": "\"Отважные\"",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/a8l-JKwa05ZfU9Y_BnE0TNxTLWpRrTNpq_uElLPcJ5w.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/a8l-JKwa05ZfU9Y_BnE0TNxTLWpRrTNpq_uElLPcJ5w.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/a8l-JKwa05ZfU9Y_BnE0TNxTLWpRrTNpq_uElLPcJ5w.png"
+                },
+                "clanLevel": 38,
+                "members": 49,
+                "clanPoints": 125750,
+                "rank": 47,
+                "previousRank": 48
+            },
+            {
+                "tag": "#8PRJ2J8",
+                "name": "ІваноФранківськ",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/H2J-pUoqConD66aLUSbb1oEQlE8jy3c5igfMc9LgsAQ.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/H2J-pUoqConD66aLUSbb1oEQlE8jy3c5igfMc9LgsAQ.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/H2J-pUoqConD66aLUSbb1oEQlE8jy3c5igfMc9LgsAQ.png"
+                },
+                "clanLevel": 32,
+                "members": 44,
+                "clanPoints": 125500,
+                "rank": 48,
+                "previousRank": 49
+            },
+            {
+                "tag": "#2Y0PJR2Q8",
+                "name": "Спутник",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/K3knpfCjcdkUNWnOZ8EKnTLfR5QAxE-fLRai5xP-5wE.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/K3knpfCjcdkUNWnOZ8EKnTLfR5QAxE-fLRai5xP-5wE.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/K3knpfCjcdkUNWnOZ8EKnTLfR5QAxE-fLRai5xP-5wE.png"
+                },
+                "clanLevel": 22,
+                "members": 37,
+                "clanPoints": 125500,
+                "rank": 49,
+                "previousRank": 46
+            },
+            {
+                "tag": "#2YY92V2V8",
+                "name": "kr.ua.lwc",
+                "location": {
+                    "id": 32000246,
+                    "name": "Ukraine",
+                    "isCountry": true,
+                    "countryCode": "UA"
+                },
+                "badgeUrls": {
+                    "small": "https://api-assets.clashofclans.com/badges/70/j5fZttsE-a8NeWVWpaQ7AKzElceXByqJad7X0DXFaG0.png",
+                    "large": "https://api-assets.clashofclans.com/badges/512/j5fZttsE-a8NeWVWpaQ7AKzElceXByqJad7X0DXFaG0.png",
+                    "medium": "https://api-assets.clashofclans.com/badges/200/j5fZttsE-a8NeWVWpaQ7AKzElceXByqJad7X0DXFaG0.png"
+                },
+                "clanLevel": 23,
+                "members": 43,
+                "clanPoints": 125500,
+                "rank": 50,
+                "previousRank": 43
+            }
+        ],
+        "paging": {
+            "cursors": {
+                "after": "eyJwb3MiOjUwfQ",
+                "before": "eyJwb3MiOjI1fQ"
+            }
+        }
+    }
+}
