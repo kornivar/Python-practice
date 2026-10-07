@@ -418,4 +418,6 @@ FodyWeavers.xsd
 *.msp
 
 .idea/
-.env
+.venv/
+__pycache__/
+.env.*
