@@ -1,91 +1,79 @@
-import os
 from contextlib import asynccontextmanager
 from typing import Annotated
 
-from dotenv import load_dotenv
 from fastapi import Depends, FastAPI, HTTPException, Query, Response, status
 from pydantic import BaseModel, ConfigDict, Field
-from sqlalchemy import Boolean, Float, String, create_engine, select
-from sqlalchemy.orm import DeclarativeBase, Mapped, Session, mapped_column, sessionmaker
+from sqlalchemy import select
+from sqlalchemy.orm import Session
 
+from models import Contract, Mercenary
+from connection import Base, engine, SessionLocal
 
-load_dotenv()
+# =========================
+# PYDANTIC SCHEMAS
+# =========================
 
-DATABASE_URL = os.getenv("DATABASE_URL")
-
-if not DATABASE_URL:
-    raise RuntimeError(
-        "DATABASE_URL is not set. Create a .env file from .env "
-        "and paste your Neon connection string there."
-    )
-
-
-if DATABASE_URL.startswith("postgresql://"):
-    DATABASE_URL = DATABASE_URL.replace(
-        "postgresql://", "postgresql+psycopg://", 1
-    )
-elif DATABASE_URL.startswith("postgres://"):
-    DATABASE_URL = DATABASE_URL.replace(
-        "postgres://", "postgresql+psycopg://", 1
-    )
-
-
-engine_options: dict = {"pool_pre_ping": True}
-if DATABASE_URL.startswith("sqlite"):
-    engine_options["connect_args"] = {"check_same_thread": False}
-else:
-    engine_options["pool_recycle"] = 300
-
-engine = create_engine(DATABASE_URL, **engine_options)
-SessionLocal = sessionmaker(bind=engine, autoflush=False, expire_on_commit=False)
-
-
-
-class Base(DeclarativeBase):
-    pass
-
-
-
-class Product(Base):
-    __tablename__ = "products"
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-    name: Mapped[str] = mapped_column(String(120), index=True)
-    category: Mapped[str] = mapped_column(String(80), index=True)
-    price: Mapped[float] = mapped_column(Float)
-    in_stock: Mapped[bool] = mapped_column(Boolean, default=True)
-
-
-
-class ProductCreate(BaseModel):
+class ContractCreate(BaseModel):
     name: str = Field(min_length=2, max_length=120)
-    category: str = Field(min_length=2, max_length=80)
-    price: float = Field(gt=0)
-    in_stock: bool = True
+    description: str = Field(min_length=2, max_length=500)
+    difficulty: int = Field(ge=1, le=10)
+    reward: float = Field(gt=0)
+    district: str = Field(min_length=2, max_length=100)
 
 
-class ProductUpdate(BaseModel):
+class ContractUpdate(BaseModel):
     name: str | None = Field(default=None, min_length=2, max_length=120)
-    category: str | None = Field(default=None, min_length=2, max_length=80)
-    price: float | None = Field(default=None, gt=0)
-    in_stock: bool | None = None
+    description: str | None = Field(
+        default=None, min_length=2, max_length=500
+    )
+    difficulty: int | None = Field(default=None, ge=1, le=10)
+    reward: float | None = Field(default=None, gt=0)
+    district: str | None = Field(
+        default=None, min_length=2, max_length=100
+    )
 
 
-class ProductRead(BaseModel):
+class ContractRead(BaseModel):
     id: int
     name: str
-    category: str
-    price: float
-    in_stock: bool
-
+    description: str
+    difficulty: int
+    reward: float
+    district: str
+    status: str
+    mercenary_id: int | None
 
     model_config = ConfigDict(from_attributes=True)
 
 
+class MercenaryCreate(BaseModel):
+    nickname: str = Field(min_length=2, max_length=50)
+    level: int = Field(ge=1)
+    reputation: int = Field(default=0, ge=0)
+    balance: float = Field(default=0, ge=0)
 
+
+class MercenaryRead(BaseModel):
+    id: int
+    nickname: str
+    level: int
+    reputation: int
+    balance: float
+
+    model_config = ConfigDict(from_attributes=True)
+
+
+class ContractTake(BaseModel):
+    mercenary_id: int = Field(gt=0)
+
+
+# =========================
+# DATABASE DEPENDENCY
+# =========================
 
 def get_db():
     db = SessionLocal()
+
     try:
         yield db
     finally:
@@ -95,6 +83,9 @@ def get_db():
 DbSession = Annotated[Session, Depends(get_db)]
 
 
+# =========================
+# APPLICATION
+# =========================
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -103,111 +94,331 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="Mini Store API - Neon PostgreSQL",
+    title="Contract Management API",
     description=(
-        "Lesson example: FastAPI + SQLAlchemy ORM + cloud PostgreSQL in Neon"
+        "Contract management, mercenary assignment, "
+        "contract lifecycle and profitability ranking."
     ),
-    version="3.0.0",
+    version="1.0.0",
     lifespan=lifespan,
 )
 
 
 @app.get("/")
 def root():
-    return {
-        "message": "Mini Store API is running",
-        "storage": "PostgreSQL via SQLAlchemy ORM",
-    }
+    return {"message": "Contract Management API is running"}
 
 
-@app.get("/products", response_model=list[ProductRead])
-def get_products(
+# =========================
+# CONTRACT CRUD
+# =========================
+
+@app.post(
+    "/contracts",
+    response_model=ContractRead,
+    status_code=status.HTTP_201_CREATED,
+)
+def create_contract(data: ContractCreate, db: DbSession):
+    contract = Contract(**data.model_dump())
+
+    db.add(contract)
+    db.commit()
+    db.refresh(contract)
+
+    return contract
+
+
+@app.get("/contracts", response_model=list[ContractRead])
+def get_contracts(
     db: DbSession,
-    category: str | None = None,
-    in_stock: bool | None = None,
-    min_price: float | None = Query(default=None, ge=0),
-    max_price: float | None = Query(default=None, ge=0),
+    contract_status: str | None = Query(
+        default=None,
+        alias="status",
+        pattern="^(OPEN|IN_PROGRESS|COMPLETED|FAILED)$",
+    ),
+    district: str | None = None,
+    min_reward: float | None = Query(default=None, ult=None, ge=0),
+    max_difficulty: int | None = Query(defage=1, le=10),
 ):
-    statement = select(Product)
+    statement = select(Contract)
 
-    if category is not None:
-        statement = statement.where(Product.category == category)
+    if contract_status is not None:
+        statement = statement.where(
+            Contract.status == contract_status
+        )
 
-    if in_stock is not None:
-        statement = statement.where(Product.in_stock == in_stock)
+    if district is not None:
+        statement = statement.where(
+            Contract.district == district
+        )
 
-    if min_price is not None:
-        statement = statement.where(Product.price >= min_price)
+    if min_reward is not None:
+        statement = statement.where(
+            Contract.reward >= min_reward
+        )
 
-    if max_price is not None:
-        statement = statement.where(Product.price <= max_price)
+    if max_difficulty is not None:
+        statement = statement.where(
+            Contract.difficulty <= max_difficulty
+        )
 
     return db.scalars(statement).all()
 
 
-@app.get("/products/{product_id}", response_model=ProductRead)
-def get_product(product_id: int, db: DbSession):
-    product = db.get(Product, product_id)
+@app.get("/contracts/best-value", response_model=ContractRead)
+def get_best_contract(db: DbSession):
+    statement = (
+        select(Contract)
+        .where(Contract.status == "OPEN")
+        .order_by(
+            (Contract.reward / Contract.difficulty).desc(),
+            Contract.id.asc(),
+        )
+        .limit(1)
+    )
 
-    if product is None:
+    contract = db.scalar(statement)
+
+    if contract is None:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="Product not found",
+            detail="No open contracts available",
         )
 
-    return product
+    return contract
 
 
-@app.post(
-    "/products",
-    response_model=ProductRead,
-    status_code=status.HTTP_201_CREATED,
-)
-def create_product(data: ProductCreate, db: DbSession):
-    product = Product(**data.model_dump())
+@app.get("/contracts/{contract_id}", response_model=ContractRead)
+def get_contract(contract_id: int, db: DbSession):
+    contract = db.get(Contract, contract_id)
 
-    db.add(product)
-    db.commit()
-    db.refresh(product)
-
-    return product
-
-
-@app.patch("/products/{product_id}", response_model=ProductRead)
-def update_product(product_id: int, data: ProductUpdate, db: DbSession):
-    product = db.get(Product, product_id)
-
-    if product is None:
+    if contract is None:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="Product not found",
+            detail="Contract not found",
+        )
+
+    return contract
+
+
+@app.patch("/contracts/{contract_id}", response_model=ContractRead)
+def update_contract(
+    contract_id: int,
+    data: ContractUpdate,
+    db: DbSession,
+):
+    contract = db.get(Contract, contract_id)
+
+    if contract is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Contract not found",
         )
 
     changes = data.model_dump(exclude_unset=True)
 
     for field_name, value in changes.items():
-        setattr(product, field_name, value)
+        setattr(contract, field_name, value)
 
     db.commit()
-    db.refresh(product)
+    db.refresh(contract)
 
-    return product
+    return contract
 
 
 @app.delete(
-    "/products/{product_id}",
+    "/contracts/{contract_id}",
     status_code=status.HTTP_204_NO_CONTENT,
 )
-def delete_product(product_id: int, db: DbSession):
-    product = db.get(Product, product_id)
+def delete_contract(contract_id: int, db: DbSession):
+    contract = db.get(Contract, contract_id)
 
-    if product is None:
+    if contract is None:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="Product not found",
+            detail="Contract not found",
         )
 
-    db.delete(product)
+    if contract.status == "IN_PROGRESS":
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="Cannot delete a contract in progress",
+        )
+
+    db.delete(contract)
     db.commit()
 
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+
+# =========================
+# CONTRACT BUSINESS LOGIC
+# =========================
+
+@app.post(
+    "/contracts/{contract_id}/take",
+    response_model=ContractRead,
+)
+def take_contract(
+    contract_id: int,
+    data: ContractTake,
+    db: DbSession,
+):
+    contract = db.get(Contract, contract_id)
+
+    if contract is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Contract not found",
+        )
+
+    if contract.status != "OPEN":
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="Only open contracts can be taken",
+        )
+
+    mercenary = db.get(Mercenary, data.mercenary_id)
+
+    if mercenary is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Mercenary not found",
+        )
+
+    if contract.difficulty > mercenary.level:
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="Contract difficulty exceeds mercenary level",
+        )
+
+    contract.mercenary_id = mercenary.id
+    contract.status = "IN_PROGRESS"
+
+    db.commit()
+    db.refresh(contract)
+
+    return contract
+
+
+@app.post(
+    "/contracts/{contract_id}/complete",
+    response_model=ContractRead,
+)
+def complete_contract(contract_id: int, db: DbSession):
+    contract = db.get(Contract, contract_id)
+
+    if contract is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Contract not found",
+        )
+
+    if contract.status != "IN_PROGRESS":
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="Only contracts in progress can be completed",
+        )
+
+    if contract.mercenary_id is None:
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="Contract has no assigned mercenary",
+        )
+
+    mercenary = db.get(Mercenary, contract.mercenary_id)
+
+    if mercenary is None:
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="Assigned mercenary does not exist",
+        )
+
+    contract.status = "COMPLETED"
+    mercenary.balance += contract.reward
+
+    db.commit()
+    db.refresh(contract)
+
+    return contract
+
+
+@app.post(
+    "/contracts/{contract_id}/fail",
+    response_model=ContractRead,
+)
+def fail_contract(contract_id: int, db: DbSession):
+    contract = db.get(Contract, contract_id)
+
+    if contract is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Contract not found",
+        )
+
+    if contract.status != "IN_PROGRESS":
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="Only contracts in progress can fail",
+        )
+
+    contract.status = "FAILED"
+
+    db.commit()
+    db.refresh(contract)
+
+    return contract
+
+
+# =========================
+# MERCENARY ENDPOINTS
+# =========================
+
+@app.post(
+    "/mercenaries",
+    response_model=MercenaryRead,
+    status_code=status.HTTP_201_CREATED,
+)
+def create_mercenary(data: MercenaryCreate, db: DbSession):
+    existing = db.scalar(
+        select(Mercenary).where(
+            Mercenary.nickname == data.nickname
+        )
+    )
+
+    if existing is not None:
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="Mercenary nickname already exists",
+        )
+
+    mercenary = Mercenary(**data.model_dump())
+
+    db.add(mercenary)
+    db.commit()
+    db.refresh(mercenary)
+
+    return mercenary
+
+
+@app.get("/mercenaries", response_model=list[MercenaryRead])
+def get_mercenaries(db: DbSession):
+    statement = select(Mercenary).order_by(Mercenary.id)
+
+    return db.scalars(statement).all()
+
+
+@app.get(
+    "/mercenaries/{mercenary_id}",
+    response_model=MercenaryRead,
+)
+def get_mercenary_by_id(mercenary_id: int, db: DbSession):
+    mercenary = db.get(Mercenary, mercenary_id)
+
+    if mercenary is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Mercenary not found",
+        )
+
+    return mercenary
